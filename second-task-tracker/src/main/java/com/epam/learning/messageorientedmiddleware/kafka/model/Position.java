@@ -11,17 +11,17 @@ import java.util.Objects;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Vehicle {
+public class Position {
 
     private Long id;
 
-    private float latitude;
+    private double latitude;
 
-    private float longitude;
+    private double longitude;
 
     @Override
     public String toString() {
-        return "Vehicle{" +
+        return "Position {" +
                 "id=" + id +
                 ", latitude=" + latitude +
                 ", longitude=" + longitude +
@@ -32,8 +32,8 @@ public class Vehicle {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Vehicle vehicle = (Vehicle) o;
-        return id.equals(vehicle.id) && latitude == vehicle.latitude && longitude ==vehicle.longitude;
+        Position vehicle = (Position) o;
+        return id.equals(vehicle.id) && latitude == vehicle.latitude && longitude == vehicle.longitude;
     }
 
     @Override

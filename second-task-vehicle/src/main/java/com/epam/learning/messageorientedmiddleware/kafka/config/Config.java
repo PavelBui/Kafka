@@ -1,6 +1,6 @@
 package com.epam.learning.messageorientedmiddleware.kafka.config;
 
-import com.epam.learning.messageorientedmiddleware.kafka.model.Vehicle;
+import com.epam.learning.messageorientedmiddleware.kafka.model.Position;
 import org.apache.kafka.clients.admin.NewTopic;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringSerializer;
@@ -25,7 +25,7 @@ public class Config {
     private String topic;
 
     @Bean
-    public ProducerFactory<String, Vehicle> producerFactory() {
+    public ProducerFactory<String, Position> producerFactory() {
         Map<String, Object> configProps = new HashMap<>();
         configProps.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapAddress);
         configProps.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
@@ -34,7 +34,7 @@ public class Config {
     }
 
     @Bean
-    public KafkaTemplate<String, Vehicle> kafkaTemplate() {
+    public KafkaTemplate<String, Position> kafkaTemplate() {
         return new KafkaTemplate(producerFactory());
     }
 

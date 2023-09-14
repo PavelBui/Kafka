@@ -1,9 +1,8 @@
 package com.epam.learning.messageorientedmiddleware.kafka.controller.impl;
 
 import com.epam.learning.messageorientedmiddleware.kafka.controller.VehicleController;
-import com.epam.learning.messageorientedmiddleware.kafka.dto.VehicleRequestDto;
-import com.epam.learning.messageorientedmiddleware.kafka.dto.VehicleResponseDto;
-import com.epam.learning.messageorientedmiddleware.kafka.model.Vehicle;
+import com.epam.learning.messageorientedmiddleware.kafka.dto.PositionRequestDto;
+import com.epam.learning.messageorientedmiddleware.kafka.model.Position;
 import com.epam.learning.messageorientedmiddleware.kafka.service.VehicleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.converter.Converter;
@@ -17,13 +16,11 @@ public class VehicleControllerImpl implements VehicleController {
     @Autowired
     private VehicleService vehicleService;
     @Autowired
-    private Converter<Vehicle, VehicleResponseDto> vehicleToVehicleResponseDtoConverter;
-    @Autowired
-    private Converter<VehicleRequestDto, Vehicle> vehicleRequestDtoToVehicleConverter;
+    private Converter<PositionRequestDto, Position> positionRequestDtoToPositionConverter;
 
-    public ResponseEntity<String> sendVehicle(@RequestBody VehicleRequestDto vehicleRequestDto) {
+    public ResponseEntity<String> sendVehicle(@RequestBody PositionRequestDto positionRequestDto) {
         try {
-            Vehicle vehicle = vehicleService.sendVehicle(vehicleRequestDtoToVehicleConverter.convert(vehicleRequestDto));
+            Position vehicle = vehicleService.sendVehicle(positionRequestDtoToPositionConverter.convert(positionRequestDto));
             if (vehicle.getId() < 1) {
                 return ResponseEntity.badRequest().body("Bad id (should be more than 0");
             }
@@ -32,7 +29,7 @@ public class VehicleControllerImpl implements VehicleController {
             }
             return ResponseEntity.ok(vehicle.toString());
         } catch (Exception e) {
-            return ResponseEntity.badRequest().body("Unprocessed vehicle");
+            return ResponseEntity.badRequest().body("Non processable vehicle");
         }
     }
 

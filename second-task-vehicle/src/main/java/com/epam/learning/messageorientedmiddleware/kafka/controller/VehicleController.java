@@ -1,6 +1,6 @@
 package com.epam.learning.messageorientedmiddleware.kafka.controller;
 
-import com.epam.learning.messageorientedmiddleware.kafka.dto.VehicleRequestDto;
+import com.epam.learning.messageorientedmiddleware.kafka.dto.PositionRequestDto;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -8,6 +8,6 @@ import org.springframework.web.bind.annotation.*;
 public interface VehicleController {
 
     @GetMapping
-    ResponseEntity<String> sendVehicle(@RequestBody VehicleRequestDto vehicleRequestDto);
+    ResponseEntity<String> sendVehicle(@RequestBody PositionRequestDto vehicleRequestDto);
 
 }

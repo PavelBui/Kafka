@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class VehicleRequestDto {
+public class PositionRequestDto {
 
     private Long id;
 

@@ -1,6 +1,6 @@
 package com.epam.learning.messageorientedmiddleware.kafka.service.impl;
 
-import com.epam.learning.messageorientedmiddleware.kafka.model.Vehicle;
+import com.epam.learning.messageorientedmiddleware.kafka.model.Position;
 import org.apache.kafka.clients.admin.NewTopic;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,18 +17,18 @@ public class ProduceService {
     private static final Logger log = LoggerFactory.getLogger(ProduceService.class);
 
     @Autowired
-    private KafkaTemplate<String, Vehicle> kafkaTemplate;
+    private KafkaTemplate<String, Position> kafkaTemplate;
 
     @Autowired
     private NewTopic topic;
 
-    public void send(Vehicle vehicle) {
-        CompletableFuture<SendResult<String, Vehicle>> future = kafkaTemplate.send(topic.name(), vehicle.getId().toString(), vehicle).completable();
+    public void send(Position position) {
+        CompletableFuture<SendResult<String, Position>> future = kafkaTemplate.send(topic.name(), position.getId().toString(), position).completable();
         future.whenComplete((result, ex) -> {
             if (ex == null) {
-                log.info("Sent {} with partition = {} and offset = {}", vehicle, result.getRecordMetadata().partition(), result.getRecordMetadata().offset());
+                log.info("Sent {} with partition = {} and offset = {}", position, result.getRecordMetadata().partition(), result.getRecordMetadata().offset());
             } else {
-                log.error("Unable to send {} due to {}", vehicle, ex.getMessage());
+                log.error("Unable to send {} due to {}", position, ex.getMessage());
             }
         });
     }

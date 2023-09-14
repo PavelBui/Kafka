@@ -1,9 +1,9 @@
 package com.epam.learning.messageorientedmiddleware.kafka.service;
 
-import com.epam.learning.messageorientedmiddleware.kafka.model.Vehicle;
+import com.epam.learning.messageorientedmiddleware.kafka.model.Position;
 
 public interface VehicleService {
 
-    Vehicle sendVehicle(Vehicle vehicle);
+    Position sendVehicle(Position position);
 
 }

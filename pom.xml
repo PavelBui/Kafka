@@ -6,6 +6,8 @@
 	<modules>
 		<module>first-task</module>
 		<module>second-task-vehicle</module>
+		<module>second-task-tracker</module>
+		<module>second-task-logger</module>
 	</modules>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
