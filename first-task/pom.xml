@@ -9,9 +9,9 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>task1</artifactId>
+    <artifactId>first-task</artifactId>
     <version>1.0.0-SNAPSHOT</version>
-    <name>task1</name>
+    <name>first-task</name>
     <description>Kafka Task 1</description>
 
     <properties>
