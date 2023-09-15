@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.support.SendResult;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -22,6 +23,7 @@ public class ProduceService {
     @Autowired
     private NewTopic topicInput;
 
+    @Transactional
     public void send(Distance distance) {
         CompletableFuture<SendResult<String, Distance>> future = kafkaTemplate.send(topicInput.name(), distance.getId().toString(), distance).completable();
         future.whenComplete((result, ex) -> {
