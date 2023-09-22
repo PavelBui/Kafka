@@ -26,7 +26,7 @@ public class KafkaTest {
 
             String bootstrapServers = kafka.getBootstrapServers();
             int partitions = 3;
-            int rf = 2;
+            int rf = 1;
             String topicName = "BuiTopic";
             String groupId = "BuiGroup";
 

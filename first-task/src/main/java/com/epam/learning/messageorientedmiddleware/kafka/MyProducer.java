@@ -23,7 +23,7 @@ public class MyProducer {
         properties.setProperty("value.serializer", StringSerializer.class.getName());
         properties.setProperty("acks", "all");
         properties.setProperty("min.insync.replicas", "2");
-        properties.setProperty("retries", "2147483647");
+        properties.setProperty("retries", String.valueOf(Integer.MAX_VALUE));
         properties.setProperty("max.in.flight.requests", "5");
         properties.setProperty("enable.idempotence", "true");
         producer = new KafkaProducer<>(properties);
